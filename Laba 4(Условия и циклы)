@@ -1,0 +1,33 @@
+import UIKit
+
+var mistake = (err: "Ошибка подключения!", numberErr: 2)
+print("Задание 1")
+print(mistake.err, "Код ошибки:", mistake.numberErr)
+if mistake.numberErr == 1 { print("Нет подключения к сети") }
+else if mistake.numberErr == 2 { print("Сервер не отвечает") }
+else { print("Такая ошибка отсутствует!") }
+
+print("\nЗадание 2")
+var mistake1 = (err1: "Ошибка подключения!", numberErr1: 201)
+var mistake2 = (err2: "Ошибка подключения к серверу!", numberErr2: 42)
+var error = "Нет соединения!"
+print(error)
+print(mistake1.err1, "Код ошибки:", mistake1.numberErr1)
+print(mistake2.err2, "Код ошибки:", mistake2.numberErr2)
+
+print("\nЗадание 3")
+var komp = (vendor:"DEXP", frequency:3600, numberCores:6, memCapacity:16)
+var komp1 = (vendor1:"MSI", frequency1:4200, numberCores1:8, memCapacity1:8)
+var komp2 = (vendor2:"HP", frequency2:3800, numberCores2:4, memCapacity2:32)
+var mem = 16, freq = 4200, cores = 4
+if (komp.frequency == freq) { print("Компьютер с частотой", freq, "у компании DEXP") }
+else if (komp1.frequency1 == freq) { print("Компьютер с частотой", freq, "у компании MSI") }
+else { print("Компьютер с частотой", freq, "у компании HP") }
+
+if (komp.memCapacity == mem) { print("Компьютер с объемом памяти", mem, "у компании DEXP") }
+else if (komp1.memCapacity1 == mem) { print("Компьютер с объемом памяти", mem, "у компании MSI") }
+else { print("Компьютер с объемом памяти", mem, "у компании HP") }
+
+if (komp.numberCores == cores) { print("Компьютер с количеством ядер:", cores, "у компании DEXP") }
+else if (komp1.numberCores1 == cores) { print("Компьютер с количеством ядер:", cores, "у компании MSI") }
+else { print("Компьютер с количеством ядер", cores, "у компании HP") }
