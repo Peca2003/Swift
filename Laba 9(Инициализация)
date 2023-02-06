@@ -1,0 +1,54 @@
+/**
+ 1.    Создать класс по варианту, сделать назначенные и удобные инициализаторы, деинициализаторы.
+ 2.    Создать новый класс на основе исходного с учетом варианта задания (автопарк, библиотека, каталог, команда, группа, реестр фирм, склад компьютеров, спортклуб, автостоянка, каталог журнальных статей), использовать наследование.
+ 3.    Заполнить информацию и вывести на экран
+ */
+
+import UIKit
+
+class main
+{
+    var vendor: String
+    var processorFrequency: Int
+    var numberCores: Int
+    init(vendor:String, processorFrequency: Int, numberCores: Int)
+    {
+        self.vendor = vendor
+        self.processorFrequency = processorFrequency
+        self.numberCores = numberCores
+    }
+    deinit { print("Деинициализатор") }
+}
+
+class computerClass: main
+{
+    var memoryCapacity: Int
+    init(vendor: String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+    {
+        self.memoryCapacity = memoryCapacity
+        super.init(vendor: vendor, processorFrequency: processorFrequency, numberCores: numberCores)
+    }
+    deinit { print("Деинициализатор") }
+}
+
+class computerClassInit: main
+{
+    var memoryCapacity: Int
+    init(vendor: String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+    {
+        self.memoryCapacity = memoryCapacity
+        super.init(vendor: vendor, processorFrequency: processorFrequency, numberCores: numberCores)
+    }
+    override convenience init(vendor: String, processorFrequency: Int, numberCores: Int)
+    {
+        self.init(vendor: vendor, processorFrequency: processorFrequency, numberCores: numberCores, memoryCapacity: 0)
+    }
+    deinit { print("Деинициализатор") }
+}
+
+let computer = main(vendor: "Sapphire", processorFrequency: 3600, numberCores: 6)
+let computerSuperInit = computerClass(vendor: "Sapphire", processorFrequency: 3600, numberCores: 6, memoryCapacity: 16)
+let computerInit = computerClassInit(vendor: "ASUS", processorFrequency: 3800, numberCores: 8, memoryCapacity: 32)
+print("Класс\nПроизводитель \(computer.vendor)\nЧастота процессора \(computer.processorFrequency)\nКоличество ядер \(computer.numberCores)")
+print("\nКласс с назначенным инициализатором\nПроизводитель \(computerSuperInit.vendor)\nЧастота процессора \(computerSuperInit.processorFrequency)\nКоличество ядер \(computerSuperInit.numberCores)\nОбъем памяти \(computerSuperInit.memoryCapacity)")
+print("\nКласс с удобным инициализатором\nПроизводитель \(computerInit.vendor)\nЧастота процессора \(computerInit.processorFrequency)\nКоличество ядер \(computerInit.numberCores)\nОбъем памяти \(computerInit.memoryCapacity)")
