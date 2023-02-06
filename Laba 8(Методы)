@@ -1,0 +1,50 @@
+/**
+ 1.    В соответствии со своим вариантом задания создать структуру, инициализировать его,  реализовать методы мутации для численного значения, которое может быть увеличено, без потери здравого смысла объекта.
+ 2.    Реализовать метод вывода на печать экземпляра структуры
+ 3.    Создать массив из 5 элементов типа созданной структуры согласно Вашему варианту задания. (Автопарк, библиотека, каталог, команда, группа, реестр фирм, склад компьютеров, спортклуб, автостоянка, каталог журнальных статей).
+ 4.    Реализовать метод поиска нужного объекта в массиве и вывести его на экран
+ */
+
+import UIKit
+
+struct computerStruct
+{
+    var vendor: String
+    var processorFrequency: Int
+    var numberCores: Int
+    var memoryCapacity: Int
+    init(vendor:String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+    {
+        self.vendor = vendor
+        self.processorFrequency = processorFrequency
+        self.numberCores = numberCores
+        self.memoryCapacity = memoryCapacity
+    }
+    mutating func mutantStruct(res: Int)
+    {
+        processorFrequency += res
+        print("Увеличенное значение частоты на \(res): \(processorFrequency)")
+    }
+    func displayInfo()
+    {
+        let ven = vendor
+        let frequency = processorFrequency
+        let cores = numberCores
+        let memory = memoryCapacity
+        print("Информация о компьютере\nПроизводитель \(ven)\nЧастота процессора \(frequency)\nКоличество ядер \(cores)\nОбъем памяти \(memory)")
+    }
+}
+
+var computer = computerStruct(vendor: "Sapphire", processorFrequency: 3600, numberCores: 6, memoryCapacity: 16)
+var computer1 = computerStruct(vendor: "ASUS", processorFrequency: 3500, numberCores: 6, memoryCapacity: 16)
+var computer2 = computerStruct(vendor: "Gigabyte", processorFrequency: 3800, numberCores: 8, memoryCapacity: 32)
+var computer3 = computerStruct(vendor: "AORUS", processorFrequency: 2900, numberCores: 6, memoryCapacity: 16)
+var computer4 = computerStruct(vendor: "Sapphire", processorFrequency: 3700, numberCores: 12, memoryCapacity: 64)
+computer.mutantStruct(res: 50)
+var computers = [computer, computer1, computer2, computer3, computer4]
+computer.displayInfo()
+var search = "ASUS"
+for i in 0...4
+{
+    if search == computers[i].vendor { print("Компьютер по производителю \(search) найден!\n\(computers[i])") }
+}
