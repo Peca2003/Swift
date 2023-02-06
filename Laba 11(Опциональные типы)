@@ -1,0 +1,115 @@
+/**
+ 1.    Создать пять строковых констант
+
+ Одни константы это только цифры, другие содержат еще и буквы
+ Найти сумму всех этих констант приведя их к Int
+ (Используйте и optionalbinding и forcedunwrapping)
+
+ 2. С сервера к нам приходит тюпл с тремя параметрами:
+
+ statusCode, message, errorMessage (число, строка и строка)
+
+ в этом тюпле statusCode всегда содержит данные, но сама строка приходит только в одном поле
+
+ если statusCode от 200 до 300 исключительно, то выводите message,
+
+ в противном случает выводите errorMessage
+
+ После этого проделайте тоже самое только без участия statusCode
+
+ 3. Создайте 5 тюплов с тремя параметрами:
+
+ имя, номер машины, оценка за контрольную
+
+ при создании этих тюплов не должно быть никаких данных
+
+ после создания каждому студенту установите имя
+
+ некоторым установите номер машины
+
+ некоторым установите результат контрольной
+
+ выведите в консоль:
+
+ - имена студента
+ - есть ли у него машина
+ - если да, то какой номер
+ - был ли на контрольной
+ - если да, то какая оценка
+
+ */
+
+import UIKit
+import Foundation
+
+let someString: Int? = Int("14")
+let someString1: Int? = Int("31")
+let someString2: Int? = Int("6")
+let someString3: Int? = Int("gh9")
+let someString4: Int? = Int("gwr34")
+
+var sumString = 0
+print("Задание 1")
+if someString != nil { sumString += someString! }
+else { print("Строка не прошла проверку") }
+
+if someString1 != nil { sumString += someString1! }
+else { print("Строка не прошла проверку") }
+
+if someString2 != nil { sumString += someString2! }
+else { print("Строка не прошла проверку") }
+
+if someString3 != nil { sumString += someString3! }
+else { print("Строка не прошла проверку") }
+
+if someString4 != nil { sumString += someString4! }
+else { print("Строка не прошла проверку") }
+
+print("Сумма строк =", sumString)
+print("\nЗадание 2")
+let info: (statusCode: Int, message: String?, errorMessage: String?) = (756, nil, "Ошибка инициализации")
+if info.statusCode >= 200 && info.statusCode <= 299
+{
+    if let message = info.message { print("Выполнено. Сообщение:", message) }
+    else { print("Выполнено. Сообщение отсутствует") }
+}
+else
+{
+    if let message = info.errorMessage { print("Ошибка. Сообщение:", message) }
+    else { print("Ошибка. Сообщение отсутствует") }
+}
+print("\nЗадание 2 без участия statusCode")
+
+if let message = info.message { print("Выполнено. Сообщение:", message) }
+else if let errorMessage = info.errorMessage { print("Ошибка. Сообщение:", errorMessage) }
+else { print("Ошибка. Сообщение отсутствует") }
+
+print("\nЗадание 3")
+
+var student: (name: String?, numberCar: Int?, markControl: Int?)
+var student1: (name: String?, numberCar: Int?, markControl: Int?)
+var student2: (name: String?, numberCar: Int?, markControl: Int?)
+var student3: (name: String?, numberCar: Int?, markControl: Int?)
+var student4: (name: String?, numberCar: Int?, markControl: Int?)
+
+student.name = "Петр"
+student1.name = "Муса"
+student2.name = "Никита"
+student3.name = "Александр"
+student4.name = "Даниил"
+
+student.numberCar = 33
+student3.numberCar = 909
+
+student1.markControl = 3
+student2.markControl = 5
+
+let studentsArray = [student, student1, student2, student3, student4]
+for students: (name: String?, numberCar: Int?, markControl: Int?) in studentsArray
+{
+    let (name, numberCar, markControl) = students
+    if let realName = name { print("Имя:", realName) }
+    if let realNumderCar = numberCar { print("Номер машины:", realNumderCar) }
+    if let realMarkControl = markControl { print("Оценка за контрольную:", realMarkControl) }
+    print("")
+}
