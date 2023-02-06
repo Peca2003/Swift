@@ -1,0 +1,88 @@
+/**
+ 1.    Создать массив из 5-ти элементов «бонусные акции», содержащий названия акций точки продаж(магазина, кафе и т.п.), отсортировать его, используя замыкания
+ 2.    Создать функцию с замыканием «увеличить бонус на», для каждой бонусной акции задать свое значение инкремента.
+ 3.    Создать класс «бонусные акции» с полями название и бонус, описать функции замыкания для начисления бонусов клиенту.
+ 4.    Изменить свой код так, чтобы при выборе любой из 5-ти акций изменялся накопленный бонус клиента в соответствие с выбранной акцией, акции и бонусы хранятся и обрабатываются с использованием класса и его методов, примените замыкание для захвата значения бонуса клиента.
+ */
+
+import UIKit
+
+var promotions: [String] = ["Утилизация старой техники", "Поломанное устройство как донор", "Пригласи друга", "Ремонт техники SAMSUNG", "Ремонт техники Xiaomi"]
+func promotionsSort(_ promotion: String, _ promotion1: String) -> Bool { return  promotion < promotion1 }
+var sortPromotions = promotions.sorted(by: promotionsSort)
+print(promotions)
+print("\nОтсортированный массив:")
+print(sortPromotions)
+
+func bonusIncrement(forIncrement amount: Int) -> () -> Int
+{
+    var bonus = 0
+    func increment() -> Int
+    {
+        bonus += amount
+        return bonus
+    }
+    return increment
+}
+var countBonus = 0
+let bonusPromotions: [Int] = [50, 30, 20, 10, 10]
+let increment = bonusIncrement(forIncrement: bonusPromotions[0]);
+let increment1 = bonusIncrement(forIncrement: bonusPromotions[1]);
+let increment2 = bonusIncrement(forIncrement: bonusPromotions[2]);
+let increment3 = bonusIncrement(forIncrement: bonusPromotions[3]);
+let increment4 = bonusIncrement(forIncrement: bonusPromotions[4]);
+var selectPromotions = "Утилизация старой техники"
+print("\nНачальные бонусы:", countBonus)
+for i in 0...4
+{
+    if selectPromotions == promotions[i]
+    {
+        print("Акция:", selectPromotions)
+        switch selectPromotions
+        {
+        case "Утилизация старой техники":
+            print("инкремент = 50")
+            countBonus += increment()
+        case "Поломанное устройство как донор":
+            print("инкремент = 30")
+            countBonus += increment1()
+        case "Пригласи друга":
+            print("инкремент = 20")
+            countBonus += increment2()
+        case "Ремонт техники SAMSUNG":
+            print("инкремент = 10")
+            countBonus += increment3()
+        case "Ремонт техники Xiaomi":
+            print("инкремент = 10")
+            countBonus += increment4()
+        default:
+            print("Акция отсутствует!")
+        }
+    }
+}
+
+class bonusPromo
+{
+    var namePromotion:String
+    var bonus:Int
+    init(namePromotion:String, bonus:Int)
+    {
+        self.namePromotion = namePromotion
+        self.bonus = bonus
+    }
+}
+let promo = bonusPromo(namePromotion: "Утилизация старой техники", bonus: 50)
+let promo1 = bonusPromo(namePromotion: "Поломанное устройство как донор", bonus: 30)
+let promo2 = bonusPromo(namePromotion: "Пригласи друга", bonus: 20)
+let promo3 = bonusPromo(namePromotion: "Ремонт техники SAMSUNG", bonus: 10)
+let promo4 = bonusPromo(namePromotion: "Ремонт техники Xiaomi", bonus: 10)
+print("Количество доступных бонусов =", countBonus)
+var promos = [promo, promo1, promo2, promo3, promo4]
+for j in 0...4
+{
+    if selectPromotions == promos[j].namePromotion
+    {
+        countBonus += promos[j].bonus
+    }
+}
+print("Количество доступных бонусов =", countBonus)
