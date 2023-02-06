@@ -1,0 +1,35 @@
+import UIKit
+
+var student = (fio:"Костенко Петр Петрович", age:19, height:180, weight:65, inst:"РКСИ", groups:"ИС-31")
+print("Задание 1")
+print("ФИО:", student.fio, "\nВозраст:", student.age, "\nРост:", student.height, "\nВес:", student.weight, "\nУчебное заведение:", student.inst, "\nГруппа:", student.groups)
+
+var student1 = (fio1:"Кумачев Муса Шамильевич", age1:20, height1:195, weight1:80, inst1:"РКСИ", groups1:"ИС-31")
+print("\nЗадание 2")
+
+if (student.age > student1.age1) { print(student.fio, "старше") }
+else { print(student1.fio1, "старше") }
+
+if (student.height > student1.height1) { print(student.fio, "выше") }
+else { print(student1.fio1, "выше") }
+
+if (student.weight > student1.weight1) { print(student.fio, "весит больше") }
+else { print(student1.fio1, "весит больше") }
+
+print("\nЗадание 3")
+
+var komp = (vendor:"DEXP", frequency:3600, numberCores:6, memCapacity:16)
+var komp1 = (vendor1:"MSI", frequency1:4200, numberCores1:8, memCapacity1:8)
+var komp2 = (vendor2:"HP", frequency2:3800, numberCores2:4, memCapacity2:32)
+
+if (komp.frequency > komp1.frequency1 && komp.frequency > komp2.frequency2) { print("Максимальная частота процессора у компании DEXP") }
+else if (komp1.frequency1 > komp.frequency && komp1.frequency1 > komp2.frequency2) { print("Максимальная частота процессора у компании MSI") }
+else { print("Максимальная частота процессора у компании HP") }
+
+if (komp.numberCores > komp1.numberCores1 && komp.numberCores > komp2.numberCores2) { print("Максимальное количество ядер процессора у компании DEXP") }
+else if (komp1.numberCores1 > komp.numberCores && komp1.numberCores1 > komp2.numberCores2) { print("Максимальное количество ядер процессора у компании MSI") }
+else { print("Максимальное количество ядер процессора у компании HP") }
+
+if (komp.memCapacity > komp1.memCapacity1 && komp.memCapacity > komp2.memCapacity2) { print("Максимальное количество памяти у компании DEXP") }
+else if (komp1.memCapacity1 > komp.memCapacity && komp1.memCapacity1 > komp2.memCapacity2) { print("Максимальное количество памяти у компании MSI") }
+else { print("Максимальное количество памяти у компании HP") }
