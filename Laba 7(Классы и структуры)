@@ -1,0 +1,82 @@
+/**
+ 1.    Создать, инициализировать и вывести на экран класс в соответствии с вариантом задания
+ 2.    Создать, инициализировать и вывести на экран структуру в соответствии с вариантом задания
+ 3.    Описать структуры на языке Swift, инициализировать поля, создать массив значений, ввести значение для поиска и вывести прочие поля найденного элемента значения
+ */
+
+import UIKit
+
+class computerClass
+{
+    var model:String
+    var vendor:String
+    var processorFrequency:Int
+    var numberCores:Int
+    var memoryCapacity:Int
+    init(model:String, vendor:String, processorFrequency:Int, numberCores:Int, memoryCapacity:Int)
+    {
+        self.model = model
+        self.vendor = vendor
+        self.processorFrequency = processorFrequency
+        self.numberCores = numberCores
+        self.memoryCapacity = memoryCapacity
+    }
+}
+let compClass = computerClass(model:"H2442A", vendor:"Sapphire", processorFrequency:3600, numberCores:6, memoryCapacity:16)
+
+print("Задание 1")
+print("Модель: \(compClass.model)")
+print("Производитель: \(compClass.vendor)")
+print("Частота процессора: \(compClass.processorFrequency)")
+print("Количество ядер: \(compClass.numberCores)")
+print("Объем памяти: \(compClass.memoryCapacity)")
+
+struct computerStruct
+{
+    var model = "H2442B"
+    var vendor = "Sapphire"
+    var processorFrequency = 4200
+    var numberCores = 8
+    var memoryCapacity = 32
+}
+let compStruct = computerStruct()
+print("\nЗадание 2")
+print("Модель: \(compStruct.model)")
+print("Производитель: \(compStruct.vendor)")
+print("Частота процессора: \(compStruct.processorFrequency)")
+print("Количество ядер: \(compStruct.numberCores)")
+print("Объем памяти: \(compStruct.memoryCapacity)")
+
+print("\nЗадание 3")
+struct computerStruct1
+{
+    var model = "2B"
+    var vendor = "Gigabyte"
+    var processorFrequency = 5400
+    var numberCores = 16
+    var memoryCapacity = 64
+}
+let compStruct1 = computerStruct1()
+
+struct computerStruct2
+{
+    var model = "9S"
+    var vendor = "MSI"
+    var processorFrequency = 4800
+    var numberCores = 12
+    var memoryCapacity = 64
+}
+let compStruct2 = computerStruct2()
+
+var modelComp: [String] = [compStruct1.model, compStruct2.model]
+var findModel = "hj"
+print("Модель для поиска:", findModel)
+if findModel == compStruct1.model
+{
+    print("Модель 2B найдена!", "\nПроизводитель: \(compStruct1.vendor)", "\nЧастота процессора: \(compStruct1.processorFrequency)", "\nКоличество ядер: \(compStruct1.numberCores)", "\nОбъем памяти: \(compStruct1.memoryCapacity)")
+}
+else if findModel == compStruct2.model
+{
+    print("Модель 9S найдена!", "\nПроизводитель: \(compStruct2.vendor)", "\nЧастота процессора: \(compStruct2.processorFrequency)", "\nКоличество ядер: \(compStruct2.numberCores)", "\nОбъем памяти: \(compStruct2.memoryCapacity)")
+}
+else { print("Такая модель отсутствует!") }
