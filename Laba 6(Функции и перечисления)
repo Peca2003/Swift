@@ -1,0 +1,63 @@
+import UIKit
+
+/*
+ 1.    Написать функцию, которая увеличивает числовое значение бонуса на заданное число для покупателя при его участии в той или иной акции, результат присвоить в переменную и вывести на экран, предварительно показать исходное значение; список акций и начисляемых за них бонусов сформировать отдельно и вывести на экран.
+ 
+ 2.    Написать функцию перевода бонусов в рубли и показать сумму скидки в рублях. (Формула произвольна, на Ваше усмотрение).
+ 
+ 3.    Написать функцию, показывающую количество получаемых наклеек в зависимости от числа имеющихся бонусов и возможные призы в акции, а также сколько еще наклеек надо собрать, чтобы получить каждый из них.
+ */
+let bonus = 120
+let bonus1 = 50
+let bonus2 = 30
+var bonusCount = 20
+var stocks: [String] = ["'Утилизация старой техники'", "'Поломанное устройство как донор'", "'Пригласи друга'"]
+var bonusesStokcks: [Int] = [120, 50, 30]
+func bonuses() ->Int
+{
+    var stock = bonusCount + bonus
+    stock += bonus1
+    stock += bonus2
+    return stock
+}
+print("Задание 1")
+print("Количество доступных бонусов:", bonusCount)
+print("\nАкция/бонусы за акцию")
+print(stocks[0], bonusesStokcks[0])
+print(stocks[1], bonusesStokcks[1])
+print(stocks[2], bonusesStokcks[2])
+print("\nКоличество бонусов, после участия в акциях", bonuses())
+
+print("\nЗадание 2")
+func bonusesTransfer() -> Int
+{
+    let discount = bonuses() * 5
+    return discount
+}
+print("1 бонус = 5 рублей")
+print("Сумма скидки составляет", bonusesTransfer(), "рублей")
+
+print("\nЗадание 3")
+print("Количество доступных бонусов:", bonusCount)
+print("\nАкция/бонусы за акцию")
+print(stocks[0], bonusesStokcks[0])
+print(stocks[1], bonusesStokcks[1])
+print(stocks[2], bonusesStokcks[2])
+print("\nКоличество бонусов, после участия в акциях", bonuses())
+
+func sticker() ->Int
+{
+    let stickers = bonuses() / 2
+    return stickers
+}
+
+var prizes: [String] = ["Чехол на смартфон", "Защитное стекло на смартфон", "Одно бесплатное обслуживание ПК"]
+var stickersCount: [Int] = [20, 40, 100]
+
+print("2 бонуса = 1 наклейка")
+print("Количество наклеек:", sticker())
+print("\nПриз/количество наклеек для его получния")
+print(prizes[0], stickersCount[0])
+print(prizes[1], stickersCount[1])
+print(prizes[2], stickersCount[2])
+print("\nДля получения всех призов не хватает", stickersCount[0] + stickersCount[1] + stickersCount[2] - sticker(), "наклеек")
