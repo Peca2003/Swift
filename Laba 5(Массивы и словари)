@@ -1,0 +1,17 @@
+import UIKit
+
+print("Задание 1")
+var arr:[Int] = [23, 65, 7, 3, 2, 9, 747]
+print("Максимальный элемент:", arr.max()!)
+print("\nЗадание 2")
+
+var student: [String: String] = ["fio": "Костенко Петр Петрович", "age": "19", "height": "180", "width": "65", "education": "РКСИ", "groups": "ИС-31"]
+var student1: [String: String] = ["fio1": "Кумачев Муса Шамильевич", "age1": "20", "height1": "15", "width1": "80", "education1": "РКСИ", "groups1": "ИС-31"]
+if student["height"]! > student1["height1"]! { print("Костенко самый высокий") }
+else { print("Кумачев самый высокий") }
+
+print("\nЗадание 3")
+var komp: [String: Int] = ["frequency": 3600, "numberCores": 6, "memCapacity": 16]
+if komp["frequency"]! > komp["memCapacity"]! && komp["frequency"]! > komp["numberCores"]! { print("Максимальное значение: частота", komp["frequency"]! as Any) }
+else if komp["numberCores"]! > komp["frequency"]! && komp["numberCores"]! > komp["memCapacity"]! { print("Максимальное значение: количество ядер", komp["numberCores"]! as Any) }
+else { print("Максимальное значение: объем памяти", komp["memCapacity"]! as Any) }
