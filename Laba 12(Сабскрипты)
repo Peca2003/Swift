@@ -1,0 +1,97 @@
+import UIKit
+import Foundation
+
+class computer
+{
+    var vendor: String
+    var processorFrequency: Int
+    var numberCores: Int
+    var memoryCapacity: Int
+    init(vendor:String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+    {
+        self.vendor = vendor
+        self.processorFrequency = processorFrequency
+        self.numberCores = numberCores
+        self.memoryCapacity = memoryCapacity
+    }
+}
+class computerWarehouse
+{
+    var computers: [computer] = [computer]()
+    init()
+    {
+        computers.append(computer(vendor: "Sapphire", processorFrequency: 3600, numberCores: 6, memoryCapacity: 16))
+        computers.append(computer(vendor: "ASUS", processorFrequency: 3800, numberCores: 8, memoryCapacity: 32))
+        computers.append(computer(vendor: "Gigabyte", processorFrequency: 2900, numberCores: 12, memoryCapacity: 64))
+    }
+    subscript(index: Int) -> computer
+    {
+        get { return computers[index] }
+        set(newComputer) { computers[index] = newComputer }
+    }
+}
+var myComputerWarehouse: computerWarehouse = computerWarehouse()
+myComputerWarehouse[0] = computer(vendor: "ASUS", processorFrequency: 3600, numberCores: 6, memoryCapacity: 16)
+print("Производитель: \(myComputerWarehouse[0].vendor), частота процессора: \(myComputerWarehouse[0].processorFrequency), количество ядер: \(myComputerWarehouse[0].numberCores), объем памяти: \(myComputerWarehouse[0].memoryCapacity)")
+print("Производитель: \(myComputerWarehouse[1].vendor), частота процессора: \(myComputerWarehouse[1].processorFrequency), количество ядер: \(myComputerWarehouse[1].numberCores), объем памяти: \(myComputerWarehouse[1].memoryCapacity)")
+print("Производитель: \(myComputerWarehouse[2].vendor), частота процессора: \(myComputerWarehouse[2].processorFrequency), количество ядер: \(myComputerWarehouse[2].numberCores), объем памяти: \(myComputerWarehouse[2].memoryCapacity)")
+
+class mistake
+{
+    var errors = [(errorCode: Int, message: String)]()
+    init(_ codes: [Int], _ messages: [String])
+    {
+        for i in 0...2 { self.errors.append((codes[i], messages[i])) }
+    }
+    func appendError(_ error: (Int, String)) { self.errors.append(error) }
+    func displayInfo()
+    {
+        for i in 0...2
+        {
+            print("Код ошибки \(errors[i].errorCode) - \(errors[i].message)")
+        }
+    }
+}
+
+class mistakeList: mistake
+{
+    var accounting = [String: Int] ()
+    init(_ times: [String], _ codes: [Int], _ messages: [String])
+    {
+        for i in 0...2 { self.accounting[times[i]] = i }
+        super.init(codes, messages)
+    }
+    func addError(_ time: String,_ error: (Int, String))
+    {
+        super.appendError(error)
+        self.accounting[time] = self.errors.count - 1
+    }
+    override func displayInfo()
+    {
+        for (time, index) in self.accounting
+        {
+            print("Время: \(time). Код ошибки \(super.errors[index].errorCode) - \(super.errors[index].message)")
+        }
+    }
+    private func cond(_ time: String, _ timeInterval: (String, String)) -> Bool
+    {
+        if time > timeInterval.0 && time < timeInterval.1 { return true }
+        return false
+    }
+    subscript(_ timeInterval: (String, String)) -> [String]
+    {
+        get
+        {
+            let sortDict = self.accounting.filter({ self.cond($0.key, timeInterval) })
+            var answersOfServer = [String] ()
+            for i in sortDict.values { answersOfServer.append(self.errors[i].message) }
+            return answersOfServer
+        }
+    }
+}
+var errorsList = mistakeList(["12:40", "15:00", "17:10"], [12, 404, 54], ["Ошибка инициализации", "Подключение к сети отсутствует", "Потеря соединения"])
+print("\nСписок всех ошибок:")
+errorsList.displayInfo()
+print()
+print("Ошибки за временной интервал:")
+errorsList[("13:00", "20:00")].forEach({ print($0, terminator: "\n") })
