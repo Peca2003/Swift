@@ -1,0 +1,13 @@
+import UIKit
+
+var computers = [Any]()
+computers.append("Sapphire")
+computers.append(3600)
+computers.append(6)
+computers.append(16)
+
+computers[1] = computers[1] as! Int + 10
+print("Производитель", computers[0],", количество ядер", computers[2], ", объем памяти", computers[3])
+print(computers[1])
+
+print(computers)
