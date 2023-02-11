@@ -1,0 +1,32 @@
+import UIKit
+
+protocol computerProtocol
+{
+    init(vendor: String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+}
+
+class computer: computerProtocol
+{
+    var vendor: String
+    var processorFrequency: Int
+    var numberCores: Int
+    var memoryCapacity: Int
+    required init(vendor: String, processorFrequency: Int, numberCores: Int, memoryCapacity: Int)
+    {
+        self.vendor = vendor
+        self.processorFrequency = processorFrequency
+        self.numberCores = numberCores
+        self.memoryCapacity = memoryCapacity
+    }
+    func myMethod() { displayInfo() }
+}
+let comp = computer(vendor: "Sapphire", processorFrequency: 3600, numberCores: 6, memoryCapacity: 16)
+print("Экземпляр класса:")
+print(comp.vendor, comp.processorFrequency, comp.numberCores, comp.memoryCapacity)
+comp.myMethod()
+extension computerProtocol
+{
+    func displayInfo() { print("\nЧастота процессора", comp.processorFrequency) }
+}
+print("\nЭкземпляр объекта:")
+print("Производитель", comp.vendor, "\nЧастота процессора", comp.processorFrequency, "\nКоличество ядер", comp.numberCores, "\nОбъем памяти", comp.memoryCapacity)
